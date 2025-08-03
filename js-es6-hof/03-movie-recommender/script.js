@@ -7,3 +7,32 @@ const movies = [
 ];
 
 // Start coding here...
+
+const topRatedMovies = movies.filter(movie => movie.rating >= 8);
+const movieDescriptions = movies.map(movie => `${movie.title} (${movie.genre}) - ${movie.rating} ⭐`);
+const movieListHeader = document.createElement("h2");
+movieListHeader.textContent = "Top Rated Movies (Rating ≥ 8)";
+document.body.appendChild(movieListHeader);
+
+topRatedMovies.forEach(movie => {
+  const p = document.createElement("p");
+  p.textContent = `${movie.title} (${movie.genre}) - ${movie.rating} ⭐`;
+  document.body.appendChild(p);
+});
+
+
+function recommend(movie, minRating = 8) {
+  return movie.rating >= minRating;
+}
+
+const recommendedMovies = movies.filter(movie => recommend(movie));
+
+const recommendedHeader = document.createElement("h2");
+recommendedHeader.textContent = "Recommended Movies";
+document.body.appendChild(recommendedHeader);
+
+recommendedMovies.forEach(movie => {
+  const p = document.createElement("p");
+  p.textContent = `${movie.title} (${movie.genre}) - ${movie.rating} ⭐`;
+  document.body.appendChild(p);
+});
